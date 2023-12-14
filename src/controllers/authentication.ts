@@ -4,18 +4,13 @@ import { authentication, random } from "../helpers";
 
 export const login = async (req: express.Request, res: express.Response) => {
   try {
-    console.log(req);
-
     const { email, password } = req.body;
-
-    // console.log(email, password);
 
     if (!email || !password) return res.sendStatus(404);
 
     const user = await getUserByEmail(email).select(
       "+authentication.salt +authentication.password"
     );
-    // console.log(user);
 
     if (!user) return res.sendStatus(400);
 
@@ -37,7 +32,8 @@ export const login = async (req: express.Request, res: express.Response) => {
       domain: "localhost",
       path: "/",
     });
-    return res.sendStatus(200).json(user).end();
+    return res.sendStatus(200);
+    // return res.sendStatus(200).json(user).end();
   } catch (error) {
     console.log(error);
     res.sendStatus(400);

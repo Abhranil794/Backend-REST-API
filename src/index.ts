@@ -20,7 +20,7 @@ app.use(compression());
 app.use(cookieParser());
 
 const server = http.createServer(app);
-const PORT = 3000;
+const PORT = 8080;
 app.use("/", router());
 server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}/`);
