@@ -32,7 +32,7 @@ export const login = async (req: express.Request, res: express.Response) => {
       domain: "localhost",
       path: "/",
     });
-    return res.sendStatus(200);
+    return res.json(user);
     // return res.sendStatus(200).json(user).end();
   } catch (error) {
     console.log(error);
